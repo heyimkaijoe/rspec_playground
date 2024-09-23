@@ -8,13 +8,15 @@ class Card
 end
 
 RSpec.describe Card do # an example group
+  before do # hook, same as before(:example)
+    @card = Card.new('Ace', 'Spades') # instance variable to persist
+  end
+
   it 'has a rank' do # an example
-    card = Card.new('Ace', 'Spades') # <- duplication
-    expect(card.rank).to eq('Ace') # an assertion
+    expect(@card.rank).to eq('Ace') # an assertion
   end
 
   it 'has a suit' do
-    card = Card.new('Ace', 'Spades') # <- duplication
-    expect(card.suit).to eq('Spades')
+    expect(@card.suit).to eq('Spades')
   end
 end
