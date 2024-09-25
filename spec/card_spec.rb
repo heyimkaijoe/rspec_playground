@@ -22,6 +22,7 @@ RSpec.describe Card do # an example group
   end
 
   it 'has a suit' do
-    expect(card.suit).to eq('Spades')
+    comparison = 'Spades'
+    expect(card.suit).to eq(comparison), "#{comparison} expected, but I got #{card.suit} instead" # custom error message
   end
 end
