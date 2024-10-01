@@ -33,6 +33,8 @@ class Movie
       actor.act
       actor.fall_off_ladder
       actor.light_on_fire
+      actor.act
+      actor.fall_off_ladder
     end
   end
 end
@@ -49,10 +51,12 @@ RSpec.describe Movie do
 
   context '#start_shooting' do
     it 'expects an actor to do 3 actions' do
-      expect(stuntman).to receive :ready?
-      expect(stuntman).to receive :act
-      expect(stuntman).to receive :fall_off_ladder
-      expect(stuntman).to receive :light_on_fire
+      # expect(stuntman).to receive(:ready?).exactly(1).times
+      expect(stuntman).to receive(:ready?).once
+      expect(stuntman).to receive(:act).twice
+
+      expect(stuntman).to receive(:fall_off_ladder).at_least(1).times
+      expect(stuntman).to receive(:light_on_fire).at_most(:once)
 
       subject.start_shooting
     end
