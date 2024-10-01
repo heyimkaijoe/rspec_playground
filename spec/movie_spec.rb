@@ -45,7 +45,7 @@ RSpec.describe Movie do
   let(:stuntman) {
     double 'Mr. Danger', ready?: true, act: 'Hell yeah!', fall_off_ladder: 'Sure thing!', light_on_fire: true
   }
-  subject { Movie.new stuntman }
+  subject { described_class.new stuntman }
 
   context '#start_shooting' do
     it 'expects an actor to do 3 actions' do
